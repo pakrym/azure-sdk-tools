@@ -192,7 +192,7 @@ form.comment {
 
 .code-line {
     white-space: pre;
-    font-family: monospace;
+    font-family: Consolas, monaco, monospace;
     line-height: 20px;
 }
 
@@ -322,7 +322,7 @@ code-inner {
 
 .namespace-view {
     font-size: 12px;
-    font-family: monospace;
+    font-family: Consolas, monaco, monospace;
 }
 
 .nav-list {
