@@ -114,7 +114,7 @@ namespace ApiView
             builder.NewLine();
 
             List<NavigationItem> namespaceItems = new List<NavigationItem>();
-            foreach (var namedTypeSymbol in namespaceSymbol.GetTypeMembers())
+            foreach (var namedTypeSymbol in SortTypes(namespaceSymbol.GetTypeMembers()))
             {
                 BuildType(builder, namedTypeSymbol, namespaceItems);
             }
