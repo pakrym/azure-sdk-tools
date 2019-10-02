@@ -18,7 +18,7 @@
   },
   "compileOnSave": true,
   "include": [
-    "wwwroot/js/*.ts"
+    "Client/*.ts"
   ],
   "exclude": [
     "node_modules"

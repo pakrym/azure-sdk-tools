@@ -1,0 +1,43 @@
+﻿/* ICONS */
+.icon {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-class {
+    background: url(/icons/class.png) center left no-repeat;
+}
+
+.icon-interface {
+    background: url(/icons/interface.png) center left no-repeat;
+}
+
+.icon-struct {
+    background: url(/icons/struct.png) center left no-repeat;
+}
+
+.icon-enum {
+    background: url(/icons/enum.png) center left no-repeat;
+}
+
+.icon-delegate {
+    background: url(/icons/delegate.png) center left no-repeat;
+}
+
+.icon-unknown {
+    background: url(/icons/type.png) center left no-repeat;
+}
+
+.icon-assembly {
+    background: url(/icons/assembly.png) center left no-repeat;
+}
+
+.icon-namespace {
+    background: url(/icons/namespace.png) center left no-repeat;
+}
+
+.icon-package {
+    background: url(/icons/package.png) center left no-repeat;
+}

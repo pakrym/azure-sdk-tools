@@ -27,10 +27,16 @@
 
   <ItemGroup>
     <Content Include="$(JavaProcessor)" Condition="Exists($(JavaProcessor))" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Client\comments.ts" />
+    <Content Include="Client\file-input.ts" />
+    <Content Include="Client\navbar.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\APIView\APIView.csproj" />
   </ItemGroup>
 
+  <Target Name="BuildClientAssets" AfterTargets="AfterBuild">
+    <Exec Command="npm run css" />
+  </Target>
 </Project>

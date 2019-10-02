@@ -1,0 +1,121 @@
+#comment-form-template {
+  display: none; }
+
+.comment-actions {
+  float: right;
+  margin-left: 10px;
+  margin-right: -5px; }
+
+.comment-box {
+  border: 1px solid gray;
+  border-spacing: 0;
+  background-color: white; }
+
+.comment-cell {
+  padding: 10px;
+  vertical-align: top; }
+
+.comment-contents {
+  max-width: 592px;
+  margin-bottom: 3px;
+  overflow-wrap: break-word; }
+
+.comment-delete-text {
+  color: #B93D3D;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+.comment-header {
+  margin-bottom: 0px;
+  line-height: 0.8 !important;
+  display: inline; }
+
+.comment-holder {
+  max-width: 780px;
+  border-radius: 2px; }
+
+.comment-icon {
+  border-radius: 3px;
+  display: inline-block;
+  line-height: 1;
+  overflow: hidden;
+  vertical-align: middle; }
+
+.comment-submit-button {
+  margin: 0 4px 0; }
+
+.comment-timestamp {
+  float: right;
+  padding-top: 6px;
+  font-size: 12px; }
+
+.review-comment {
+  padding: 4px 16px;
+  position: relative; }
+
+.review-comment:first-child {
+  padding-top: 16px; }
+
+.review-comment p {
+  margin-bottom: 0; }
+
+.comments-resolved {
+  display: none; }
+
+.commentable {
+  cursor: pointer; }
+
+.review-thread-reply {
+  background-color: #F6F8FA;
+  border-radius: 0 0 3px 3px;
+  border-top: 1px solid #E1E4E8;
+  border-bottom: 1px solid #E1E4E8;
+  padding: 8px 16px;
+  display: table;
+  width: 100%; }
+
+.reply-cell {
+  display: table-cell; }
+
+.new-comment {
+  border-radius: 3px;
+  line-height: 1.5;
+  border-collapse: separate;
+  tab-size: 8;
+  background-color: #F6F8FA;
+  padding: 12px; }
+
+.new-comment-content-text {
+  background-color: #F6F8FA;
+  max-width: 758px; }
+
+.new-comment-content {
+  position: relative;
+  margin: 0 4px 8px; }
+
+.code-line:hover .code-line-add-cell-button {
+  opacity: 1; }
+
+.code-line-add-cell-button:hover {
+  transform: scale(1); }
+
+.code-line-add-cell-button {
+  position: relative;
+  z-index: 5;
+  float: left;
+  width: 22px;
+  height: 22px;
+  margin: -2px -10px -2px -20px;
+  line-height: 21px;
+  color: #fff !important;
+  text-align: center;
+  text-indent: 0;
+  cursor: pointer;
+  background-color: #0366d6;
+  background-image: linear-gradient(#0372ef, #0366d6);
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(27, 31, 35, 0.15);
+  opacity: 0;
+  transition: transform .1s ease-in-out;
+  transform: scale(0.8);
+  user-select: none; }

@@ -1,0 +1,58 @@
+﻿
+.keyword {
+    color: blue;
+}
+
+.type {
+    color: #B93D3D;
+}
+
+.enum {
+    color: #8700BD;
+}
+
+.class {
+    color: #00B8B1;
+}
+
+.name {
+    color: black;
+}
+
+.value {
+    color: #00B80F;
+}
+.monospace {
+    font-size: 14px;
+    font-family: monospace;
+}
+
+.code {
+    line-height: 1.5;
+    border-collapse: separate;
+    width: 100%;
+    tab-size: 8;
+    border-spacing: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.code-line {
+    white-space: pre;
+    line-height: 20px;
+}
+
+.code-line-code-cell {
+    padding-left: 8px;
+
+    @extend .monospace;
+}
+
+.code-diagnostics {
+    border: 1px solid red;
+    background-color: lightpink;
+}
+
+.code-diagnostics p {
+    margin: 0;
+}

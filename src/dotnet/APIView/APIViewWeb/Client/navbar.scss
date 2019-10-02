@@ -1,0 +1,30 @@
+﻿.nav-list-children {
+    list-style-type: none;
+    text-overflow: ellipsis;
+    padding-left: 0;
+
+    @extend .monospace;
+}
+
+.nav-list-children > li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-list-toggle {
+    padding-left: 14px;
+    background: url(/icons/down.png) center left no-repeat;
+}
+
+.nav-list-collapsed > .nav-list-toggle {
+    background: url(/icons/right.png) center left no-repeat;
+}
+
+.nav-list-collapsed > .nav-list-children {
+    display: none;
+}
+
+.nav-list-group .nav-list-children {
+    padding-left: 14px;
+}

@@ -6,7 +6,7 @@
         e.preventDefault();
     });
 
-    $(document).on("click", ".line-comment-button", e => {
+    $(document).on("click", ".line-comment-cell a", e => {
         showCommentBox(getLineId(e.target));
         e.preventDefault();
     });
