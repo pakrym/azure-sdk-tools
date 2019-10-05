@@ -59,22 +59,17 @@ namespace APIViewWeb.Pages.Assemblies
         public async Task<IActionResult> OnGetAsync(string id, string revisionId = null)
         {
             TempData["Page"] = "api";
-
             Review = await _manager.GetReviewAsync(User, id);
 
-            Revision = revisionId != null ?
-                Review.Revisions.Single(r => r.RevisionId == revisionId) :
-                Review.Revisions.Last();
-
-            var reviewFile = Revision.Files.SingleOrDefault();
-            if (reviewFile != null)
-            {
-                CodeFile = await _codeFileRepository.GetCodeFileAsync(Revision.RevisionId, reviewFile.ReviewFileId);
-            }
-            else
+            if (!Review.Revisions.Any())
             {
                 return RedirectToPage("LegacyReview", new { id = id });
             }
+
+            Revision = Review.GetRevision(revisionId);
+
+            var reviewFile = Revision.Files.Single();
+            CodeFile = await _codeFileRepository.GetCodeFileAsync(Revision.RevisionId, reviewFile.ReviewFileId);
 
             Lines = new CodeFileHtmlRenderer().Render(CodeFile).ToArray();
             Comments = await _commentsManager.GetReviewCommentsAsync(id);

@@ -13,11 +13,13 @@ namespace APIViewWeb.Models
             var resolveComment = comments.FirstOrDefault(c => c.IsResolve);
             IsResolved = resolveComment != null;
             ResolvedBy = resolveComment?.Username;
+            RevisionId = comments.FirstOrDefault()?.RevisionId;
         }
 
         public string ReviewId { get; set; }
         public IEnumerable<CommentModel> Comments { get; set; }
         public string LineId { get; set; }
+        public string RevisionId { get; set; }
         public bool IsResolved { get; set; }
         public string ResolvedBy { get; set; }
     }

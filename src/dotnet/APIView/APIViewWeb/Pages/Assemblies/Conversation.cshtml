@@ -1,0 +1,26 @@
+﻿@page "{id?}"
+@model APIViewWeb.Pages.Assemblies.ConversationPageModel
+@{
+    Layout = "ReviewLayout";
+    ViewData["Title"] = "Revisions";
+}
+
+    <div class="row">
+        <div class="col-7 offset-3 border-left border-right">
+        @foreach (var thread in Model.Threads)
+        {
+            <table class="code-window border rounded-1 my-2">
+                @foreach (var line in thread.Lines)
+                {
+                    <tr data-line-id="@line.ElementId" class="code-line">
+                        <td class="code"><span class="code-inner">@Html.Raw(line.DisplayString)</span></td>
+                    </tr>
+                }
+                <partial model="@thread.Thread" name="Shared/_CommentThreadPartial"/>
+            </table>
+
+
+        }
+        </div>
+    </div>
+

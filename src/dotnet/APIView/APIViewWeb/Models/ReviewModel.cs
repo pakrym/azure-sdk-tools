@@ -33,5 +33,12 @@ namespace APIViewWeb
 #pragma warning restore 618
             set => _runAnalysis = value;
         }
+
+        public ReviewRevisionModel GetRevision(string revisionId)
+        {
+            return revisionId != null ?
+                Revisions.Single(r => r.RevisionId == revisionId) :
+                Revisions.Last();
+        }
     }
 }
