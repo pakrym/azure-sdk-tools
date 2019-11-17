@@ -66,6 +66,8 @@ namespace APIViewWeb
                 options.Conventions.AddPageRoute("/Assemblies/Index", "");
             });
 
+            services.AddServerSideBlazor();
+
             services.AddSingleton<BlobCodeFileRepository>();
             services.AddSingleton<BlobOriginalsRepository>();
             services.AddSingleton<CosmosReviewRepository>();
@@ -149,7 +151,7 @@ namespace APIViewWeb
                     };
                 });
 
-            services.AddAuthorization();
+            services.AddAuthorization(options => options.AddPolicy("review-owner", builder => builder.AddRequirements(ReviewOwnerRequirement.Instance)));
             services.AddSingleton<IConfigureOptions<AuthorizationOptions>, ConfigureOrganizationPolicy>();
 
             services.AddSingleton<IAuthorizationHandler, OrganizationRequirementHandler>();
@@ -183,6 +185,7 @@ namespace APIViewWeb
             app.UseEndpoints(endpoints => {
                 endpoints.MapRazorPages();
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorHub();
             });
         }
     }

@@ -1,0 +1,44 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Routing.UrlHelper UriHelper
+
+<table class="table tabl-hover">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Uploader</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var assembly in Reviews)
+        {
+            <tr>
+                <td>
+                    <a href="@UriHelper.Page("./Review", new { id = assembly.ReviewId })">@assembly.Name</a>
+                </td>
+                <td>
+                    <a username="@assembly.Author">@assembly.Author</a>
+                </td>
+                <td>
+                    <span date="@assembly.CreationDate.ToLocalTime()"></span>
+                </td>
+                <AuthorizeView Resource="@assembly" Policy="review-owner">
+                    <Authorized>
+                        <td>
+                            <a asp-page="./Delete" asp-route-id="@assembly.ReviewId">Delete</a>
+                        </td>
+                    </Authorized>
+                    <NotAuthorized>
+                        <td></td>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    [Parameter]
+    public IEnumerable<ReviewModel> Reviews { get; set; }
+}

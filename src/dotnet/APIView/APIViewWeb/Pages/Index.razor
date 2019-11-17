@@ -1,0 +1,74 @@
+﻿@page "/"
+@inject APIViewWeb.Respositories.ReviewManager ReviewManager
+
+
+<div class="row">
+    <div class="col my-2">
+        <div class="float-left mb-2">
+            <Button Classes="btn-primary" @onclick="e => IsUploadDialogOpen = true">Create review</Button>
+        </div>
+
+        <div class="btn-group float-right">
+            <Button Classes="btn-secondary" IsActive="@Open" @onclick="e=>SetShowClosed(false)">Open</Button>
+            <Button Classes="btn-secondary" IsActive="@(!Open)" @onclick="e=>SetShowClosed(true)">Closed</Button>
+        </div>
+    </div>
+</div>
+
+<Dialog IsOpen="IsUploadDialogOpen">
+    <Content>
+        <div class="form-group">
+            <div class="custom-file">
+                <input asp-for="Upload.Files" type="file" class="custom-file-input">
+                <label asp-for="Upload.Files" class="custom-file-label">Select file to include in API review</label>
+            </div>
+
+            <div class="form-check">
+                <EditForm Model="@UploadModel">
+                    <InputCheckbox @bind-Value="UploadModel.RunAnalysis" class="form-check-input" asp-for="Upload.RunAnalysis" />
+                </EditForm>
+                <label class="form-check-label">
+                    Run static analysis
+                </label>
+            </div>
+        </div>
+    </Content>
+    <Footer>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </Footer>
+</Dialog>
+
+<ReviewList Reviews="Reviews" />
+
+@code
+{
+    bool Open = true;
+
+    bool IsUploadDialogOpen;
+
+    IEnumerable<ReviewModel> Reviews = Array.Empty<ReviewModel>();
+
+    FileUploadModel UploadModel = new FileUploadModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await UpdateReviews();
+    }
+
+    async Task SetShowClosed(bool value)
+    {
+        Open = !value;
+
+        await UpdateReviews();
+    }
+
+    async Task UpdateReviews()
+    {
+        Reviews = await ReviewManager.GetReviewsAsync(!Open);
+    }
+
+    class FileUploadModel
+    {
+        public bool RunAnalysis { get; set; }
+    }
+}
