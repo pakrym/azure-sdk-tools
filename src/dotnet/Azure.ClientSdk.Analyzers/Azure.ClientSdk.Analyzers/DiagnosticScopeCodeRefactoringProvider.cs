@@ -9,6 +9,7 @@ using Microsoft.CodeAnalysis.CodeRefactorings;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Editing;
+using Microsoft.CodeAnalysis.Formatting;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Azure.ClientSdk.Analyzers
@@ -90,7 +91,7 @@ namespace Azure.ClientSdk.Analyzers
                 }
                 else if (methodDeclarationSyntax.ExpressionBody != null)
                 {
-                    statements = new [] { (StatementSyntax)generator.ReturnStatement(methodDeclarationSyntax.ExpressionBody.Expression) };
+                    statements = new [] { (StatementSyntax)generator.ReturnStatement(methodDeclarationSyntax.ExpressionBody.Expression).WithAdditionalAnnotations(Formatter.Annotation) };
                 }
                 else
                 {
@@ -160,7 +161,8 @@ namespace Azure.ClientSdk.Analyzers
                     .WithBody(Block(preconditions))
                     .WithSemicolonToken(default);
 
-                return Task.FromResult(context.Document.WithSyntaxRoot(tree.ReplaceNode(methodDeclarationSyntax, newMethodDeclaration)));
+                var newDocument = context.Document.WithSyntaxRoot(tree.ReplaceNode(methodDeclarationSyntax, newMethodDeclaration));
+                return Task.FromResult(newDocument);
             }
 
             context.RegisterRefactoring(CodeAction.Create("Azure SDK: Add diagnostic scope", token => AddDiagnosticScope()));
